@@ -26,7 +26,7 @@ package org.spongepowered.api.component;
 /**
  * Utility class that 'keys' an identifier to a {@link org.spongepowered.api.component.Component}.
  */
-public class ComponentKey<T extends Component<?>> {
+public class ComponentKey<T extends Component> {
     public final String identifier;
     public final Class<T> clazz;
 
@@ -35,7 +35,7 @@ public class ComponentKey<T extends Component<?>> {
         this.clazz = clazz;
     }
 
-    public static <C extends Component<?>> ComponentKey<C> of(String identifier, Class<C> clazz) {
+    public static <C extends Component> ComponentKey<C> of(String identifier, Class<C> clazz) {
         return new ComponentKey<C>(identifier, clazz);
     }
 }

@@ -21,13 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.component.entity.type.neutral;
+package org.spongepowered.api.component.attribute;
 
-import org.spongepowered.api.component.entity.type.TypeComponent;
+import org.spongepowered.api.component.Component;
+import org.spongepowered.api.math.Vector3f;
 
 /**
- * Types the {@link org.spongepowered.api.entity.Entity} as an Enderman and instructs the
- * client to render it as one.
+ * Gives the "velocity" attribute.
  */
-public interface Enderman extends TypeComponent {
+public interface Velocity extends Component {
+    Vector3f getVelocity();
+
+    void setVelocity(Vector3f velocity);
 }

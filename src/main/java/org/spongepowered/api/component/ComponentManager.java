@@ -24,11 +24,11 @@
 package org.spongepowered.api.component;
 
 /**
- * Represents an object that manages {@link org.spongepowered.api.component.Component} relationships with {@link org.spongepowered.api.component.ComponentHolder}s.
+ * Represents an object that manages {@link org.spongepowered.api.component.Component} relationships with other objects.
  *
- * It also executes {@link org.spongepowered.api.component.ComponentSystem}s which tract holders with certain components for processing
+ * It also executes {@link org.spongepowered.api.component.ComponentSystem}s which tract objects with certain components for processing
  */
-public interface ComponentManager<H extends ComponentHolder> {
+public interface ComponentManager<H> {
     /**
      * Adds a {@link ComponentSystem} to the manager to be processed.
      *
@@ -51,7 +51,7 @@ public interface ComponentManager<H extends ComponentHolder> {
      * @param key The key
      * @param instance The instance of the component
      */
-    <C extends Component<H>> C addComponent(H holder, ComponentKey<C> key, C instance);
+    <C extends Component> C addComponent(H holder, ComponentKey<C> key, C instance);
 
     /**
      * Detaches a {@link org.spongepowered.api.component.Component} based on a {@link org.spongepowered.api.component.ComponentKey}.
@@ -60,5 +60,5 @@ public interface ComponentManager<H extends ComponentHolder> {
      * @param key The key
      * @return The removed component
      */
-    <C extends Component<H>> C removeComponent(H holder, ComponentKey<C> key);
+    <C extends Component> C removeComponent(H holder, ComponentKey<C> key);
 }

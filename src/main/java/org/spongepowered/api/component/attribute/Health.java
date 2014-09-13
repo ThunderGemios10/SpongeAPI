@@ -21,10 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.component;
+package org.spongepowered.api.component.attribute;
+
+import org.spongepowered.api.component.Component;
 
 /**
- * Marks a object as able to hold {@link org.spongepowered.api.component.Component}s.
+ * Gives the "health" attribute.
  */
-public interface ComponentHolder {
+public interface Health extends Component {
+    /**
+     * Gets the value of the current health
+     * @return The value
+     */
+    double getHealth();
+
+    /**
+     * Sets the value for the health
+     * @param value The value
+     */
+    void setHealth(double value);
 }

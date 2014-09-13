@@ -21,16 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.component.entity.attribute;
+package org.spongepowered.api.component.attribute;
 
-import org.spongepowered.api.component.entity.EntityComponent;
+import org.spongepowered.api.component.Component;
+import org.spongepowered.api.math.Vector3f;
 
-public interface Hunger extends EntityComponent {
-    double getHunger();
+/**
+ * Gives the "position" attribute.
+ */
+public interface Position extends Component {
+    Vector3f getPosition();
 
-    void setHunger(double hunger);
-
-    double getSaturation();
-
-    void setSaturation(double saturation);
+    void setPosition(Vector3f position);
 }

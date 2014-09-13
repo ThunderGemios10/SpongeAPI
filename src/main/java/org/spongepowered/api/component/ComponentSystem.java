@@ -26,18 +26,18 @@ package org.spongepowered.api.component;
 import java.util.Collection;
 
 /**
- * Processes {@link org.spongepowered.api.component.ComponentHolder}s who have certain {@link org.spongepowered.api.component.Component}s.
+ * Processes objects who have certain {@link org.spongepowered.api.component.Component}s.
  */
-public interface ComponentSystem<H extends ComponentHolder> {
+public interface ComponentSystem<H> {
     /**
-     * Gets the {@link org.spongepowered.api.component.Filter} that will determine which {@link org.spongepowered.api.component.ComponentHolder}s to process.
+     * Gets the {@link org.spongepowered.api.component.Filter} that will be used to determine which objects to process.
      *
      * @return The filter
      */
     Filter getFilter();
 
     /**
-     * Returns if this system should invoke {@link ComponentSystem#process(org.spongepowered.api.component.ComponentHolder, float)}
+     * Returns if this system should invoke {@link ComponentSystem#process(Object, float)}.
      *
      * Useful for systems where you want to process them at a manual rate.
      *
@@ -46,7 +46,7 @@ public interface ComponentSystem<H extends ComponentHolder> {
     boolean shouldProcess();
 
     /**
-     * Offers a {@link org.spongepowered.api.component.ComponentHolder} to the system to be processed.
+     * Offers an object to the system to be processed.
      *
      * @param holder The holder
      * @return True if this holder will be processed (or is already being processed by this processor) or false if not
@@ -54,22 +54,12 @@ public interface ComponentSystem<H extends ComponentHolder> {
     boolean offer(H holder);
 
     /**
-     * Instructs the system to determine if {@link org.spongepowered.api.component.ComponentHolder} is still processable.
-     *
-     * If the holder isn't being processed by this system, this is ignored. If the holder is no longer valid, it will be
-     * removed.
-     *
-     * @param holder The holder in question
-     */
-    void update(H holder);
-
-    /**
-     * Called before {@link ComponentSystem#process(ComponentHolder, float)}.
+     * Called before {@link ComponentSystem#process(Object, float)}.
      */
     void preProcess();
 
     /**
-     * Processes all {@link org.spongepowered.api.component.ComponentHolder} in this system.
+     * Processes all objects in this system.
      *
      * @param holder The holder being processed
      * @param dt Time since the last processing
@@ -77,12 +67,12 @@ public interface ComponentSystem<H extends ComponentHolder> {
     void process(H holder, float dt);
 
     /**
-     * Called after {@link ComponentSystem#process(ComponentHolder, float)}.
+     * Called after {@link ComponentSystem#process(Object, float)}.
      */
     void postProcess();
 
     /**
-     * Gets all {@link org.spongepowered.api.component.ComponentHolder}s being processed by this system.
+     * Gets all objects being processed by this system.
      * @return The collection of holders
      */
     Collection<H> getAll();

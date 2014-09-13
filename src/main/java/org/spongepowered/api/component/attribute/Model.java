@@ -21,13 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.component.entity.attribute;
+package org.spongepowered.api.component.attribute;
 
-import org.spongepowered.api.component.entity.EntityComponent;
-import org.spongepowered.api.math.Vector3i;
+import org.spongepowered.api.component.Component;
 
-public interface Velocity extends EntityComponent {
-    Vector3i getVelocity();
+/**
+ * Gives the "model" attribute, used in rendering.
+ */
+public interface Model extends Component {
+    /**
+     * Returns the identifier of the model.
+     * @return The model identifier
+     */
+    String getModel();
 
-    void setVelocity(Vector3i velocity);
+    public static enum VanillaModels implements Model {
+        // TODO Someone want to add all the Vanilla models?
+        // TODO Eventhough the Enderman is THE best entity, he isn't id 0...give him the right one hm?
+        ENDERMAN(0, "minecraft:enderman");
+
+        private final int id;
+        private final String model;
+
+        VanillaModels(int id, String model) {
+            this.id = id;
+            this.model = model;
+        }
+
+        public final int getID() {
+            return id;
+        }
+
+        @Override
+        public String getModel() {
+            return model;
+        }
+    }
 }

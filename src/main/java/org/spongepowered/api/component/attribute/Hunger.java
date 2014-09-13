@@ -21,13 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.component.entity;
+package org.spongepowered.api.component.attribute;
 
 import org.spongepowered.api.component.Component;
-import org.spongepowered.api.entity.Entity;
 
 /**
- * Represents a {@link org.spongepowered.api.component.Component> attachable to {@link org.spongepowered.api.entity.Entity}s.
+ * Gives the "hunger" attribute.
  */
-public interface EntityComponent extends Component<Entity> {
+public interface Hunger extends Component {
+    double getHunger();
+
+    void setHunger(double hunger);
+
+    double getSaturation();
+
+    void setSaturation(double saturation);
 }

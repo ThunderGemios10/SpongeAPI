@@ -24,9 +24,13 @@
 package org.spongepowered.api.component;
 
 public class Filter {
-    public final Class<? extends Component<?>>[] values;
+    private final Class<? extends Component>[] filter;
 
-    public Filter(Class<? extends Component<?>>... values) {
-        this.values = values;
+    public Filter(Class<? extends Component>... filter) {
+        this.filter = filter;
+    }
+
+    public Class<? extends Component>[] getAll() {
+        return filter;
     }
 }
